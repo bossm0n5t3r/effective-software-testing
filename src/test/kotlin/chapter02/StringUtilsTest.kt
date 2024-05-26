@@ -35,7 +35,7 @@ class StringUtilsTest {
     @Test
     fun shouldEmptyListWhenStrIsEmpty() {
         assertThat(StringUtils.substringsBetween("", "open", "close"))
-            .isEqualTo(emptyList<String>())
+            .isEqualTo(arrayOf<String>())
     }
 
     @Test
@@ -59,15 +59,15 @@ class StringUtilsTest {
     @Test
     fun shouldNonEmptyListWhenStrContainsOpenAndClose() {
         assertThat(StringUtils.substringsBetween("axbaybazb", "a", "b"))
-            .isEqualTo(listOf("x", "y", "z"))
+            .isEqualTo(arrayOf("x", "y", "z"))
         assertThat(StringUtils.substringsBetween("axbaybazb", "axb", "azb"))
-            .isEqualTo(listOf("ayb"))
+            .isEqualTo(arrayOf("ayb"))
     }
 
     @Test
     fun shouldContainsEmptyStringWhenOpenAndCloseAreTogether() {
         assertThat(StringUtils.substringsBetween("ababab", "a", "b"))
-            .isEqualTo(listOf("", "", ""))
+            .isEqualTo(arrayOf("", "", ""))
     }
 
     @Test
@@ -75,12 +75,12 @@ class StringUtilsTest {
         assertThat(StringUtils.substringsBetween(" ", " ", " "))
             .isEqualTo(null)
         assertThat(StringUtils.substringsBetween("No pain, No gain", "No", "No"))
-            .isEqualTo(listOf(" pain, "))
+            .isEqualTo(arrayOf(" pain, "))
     }
 
     @Test
     fun whenStrIsKorean() {
         assertThat(StringUtils.substringsBetween("제발 한 번에 푹 자게 해주세요", "제발", "해주세요"))
-            .isEqualTo(listOf(" 한 번에 푹 자게 "))
+            .isEqualTo(arrayOf(" 한 번에 푹 자게 "))
     }
 }

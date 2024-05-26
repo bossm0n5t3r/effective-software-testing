@@ -8,11 +8,11 @@ object StringUtils {
         str: String?,
         open: String?,
         close: String?,
-    ): List<String>? {
+    ): Array<String>? {
         if (str == null || open.isNullOrEmpty() || close.isNullOrEmpty()) return null
 
         val strLength = str.length
-        if (strLength == 0) return emptyList()
+        if (strLength == 0) return arrayOf()
 
         val openLength = open.length
         val closeLength = close.length
@@ -32,6 +32,6 @@ object StringUtils {
             position = end + closeLength
         }
 
-        return result.takeIf { it.isNotEmpty() }
+        return result.toTypedArray().takeIf { it.isNotEmpty() }
     }
 }
