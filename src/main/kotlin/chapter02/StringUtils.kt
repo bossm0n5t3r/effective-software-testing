@@ -1,6 +1,9 @@
 package me.bossm0n5t3r.chapter02
 
 object StringUtils {
+    /**
+     * https://github.com/apache/commons-lang/blob/master/src/main/java/org/apache/commons/lang3/StringUtils.java#L8877-L8906
+     */
     fun substringsBetween(
         str: String?,
         open: String?,

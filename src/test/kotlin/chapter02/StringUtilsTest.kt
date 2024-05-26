@@ -5,6 +5,9 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 class StringUtilsTest {
+    /**
+     * https://github.com/apache/commons-lang/blob/master/src/test/java/org/apache/commons/lang3/StringUtilsSubstringTest.java#L324-L383
+     */
     @Test
     fun shouldNullWhenStrIsNull() {
         assertThat(StringUtils.substringsBetween(null, null, null))
