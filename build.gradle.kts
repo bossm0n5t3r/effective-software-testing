@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version "1.9.23"
     id("org.jlleitschuh.gradle.ktlint") version "12.1.1"
+    jacoco
 }
 
 group = "me.bossm0n5t3r"
@@ -21,6 +22,11 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+    finalizedBy(tasks.jacocoTestReport) // report is always generated after tests run
+}
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.test) // tests are required to run before generating the report
 }
 
 kotlin {
@@ -43,4 +49,8 @@ tasks.withType<KotlinCompile> {
         jvmTarget = "21"
         javaParameters = true // Get correct parameter names in jqwik reporting
     }
+}
+
+jacoco {
+    toolVersion = "0.8.11"
 }
