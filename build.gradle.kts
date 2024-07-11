@@ -13,11 +13,22 @@ repositories {
     mavenCentral()
 }
 
+private val exposedVersion = "0.52.0"
+
 dependencies {
     testImplementation(kotlin("test"))
     testImplementation("org.junit.jupiter:junit-jupiter-params:5.10.2")
     testImplementation("org.assertj:assertj-core:3.25.3")
     testImplementation("net.jqwik:jqwik-kotlin:1.8.4")
+
+    implementation("com.h2database:h2:2.2.224")
+
+    implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-crypt:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-kotlin-datetime:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-json:$exposedVersion")
 }
 
 tasks.test {
