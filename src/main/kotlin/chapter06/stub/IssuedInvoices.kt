@@ -6,8 +6,8 @@ import org.jetbrains.exposed.sql.transactions.transaction
 class IssuedInvoices(
     private val database: Database,
 ) {
-    fun all(): List<InvoiceEntity> =
+    fun all(): List<InvoiceDto> =
         transaction(db = database) {
-            InvoiceEntity.all().toList()
+            InvoiceEntity.all().map { it.toDto() }
         }
 }

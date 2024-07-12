@@ -6,9 +6,9 @@ import org.jetbrains.exposed.sql.transactions.transaction
 class InvoiceFilterWithDatabase(
     private val database: Database,
 ) {
-    fun lowValueInvoices(): List<InvoiceEntity> =
+    fun lowValueInvoices(): List<InvoiceDto> =
         transaction(database) {
             val issuedInvoices = IssuedInvoices(database)
-            issuedInvoices.all().filter { invoice: InvoiceEntity -> invoice.value < 100 }
+            issuedInvoices.all().filter { invoice -> invoice.value < 100 }
         }
 }
