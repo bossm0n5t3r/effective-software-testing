@@ -14,6 +14,7 @@ repositories {
 }
 
 private val exposedVersion = "0.52.0"
+private val mockkVersion = "1.13.11"
 
 dependencies {
     testImplementation(kotlin("test"))
@@ -29,6 +30,8 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-kotlin-datetime:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-json:$exposedVersion")
+
+    testImplementation("io.mockk:mockk:$mockkVersion")
 }
 
 tasks.test {
