@@ -23,6 +23,6 @@ class MathArraysPBTest {
         assertThat(result)
             .contains(*intValues) // contains all the elements
             .doesNotHaveDuplicates() // no duplicates
-            .isSortedAccordingTo(Comparator.reverseOrder()) // in descending order
+            .isSortedAccordingTo(reverseOrder()) // in descending order
     }
 }
