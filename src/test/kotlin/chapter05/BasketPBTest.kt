@@ -57,15 +57,13 @@ class BasketPBTest {
         }
     }
 
-    companion object {
-        private val randomProducts: List<Product> =
-            listOf(
-                Product("TV", BigDecimal("100")),
-                Product("Playstation", BigDecimal("150.3")),
-                Product("Refrigerator", BigDecimal("180.27")),
-                Product("Soda", BigDecimal("2.69")),
-            )
-    }
+    private val randomProducts: List<Product> =
+        listOf(
+            Product("TV", BigDecimal("100")),
+            Product("Playstation", BigDecimal("150.3")),
+            Product("Refrigerator", BigDecimal("180.27")),
+            Product("Soda", BigDecimal("2.69")),
+        )
 
     private fun addAction(): Arbitrary<AddAction> {
         // create an arbitrary product out of the list of pre-defined products
