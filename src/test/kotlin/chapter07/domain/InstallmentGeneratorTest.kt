@@ -27,14 +27,14 @@ class InstallmentGeneratorTest {
 
         sut.generateInstallments(cart, 10)
 
-        // create a Mockito captor
+        // create a MockK captor
         val allInstallments = mutableListOf<Installment>()
 
         // get all the Installments that were passed to the repository
         verify(exactly = 10) { repository.persist(capture(allInstallments)) }
 
         // now, we assert that the installments are correct
-        // all  them should have a value of 10.0
+        // all them should have a value of 10.0
         assertThat(allInstallments)
             .hasSize(10)
             .allMatch { i -> i.value == 10.0 }
@@ -54,7 +54,7 @@ class InstallmentGeneratorTest {
         val allInstallments = sut.generateInstallments2(cart, 10)
 
         // now, we assert that the installments are correct
-        // all  them should have a value of 10.0
+        // all them should have a value of 10.0
         assertThat(allInstallments)
             .hasSize(10)
             .allMatch { i -> i.value == 10.0 }
