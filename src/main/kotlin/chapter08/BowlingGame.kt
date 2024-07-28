@@ -4,7 +4,21 @@ object BowlingGame {
     fun calculateScore(framesString: String): Int {
         val frameList = framesString.toFrameList()
         require(frameList.size == 10) { "Frames count should be ten." }
-        return -1
+
+        var totalScore = 0
+        for ((currentFrame, nextFrame) in frameList.windowed(2)) {
+            totalScore += currentFrame.totalScore
+            if (currentFrame.isStrike) {
+                totalScore += nextFrame.totalScore
+            }
+            if (currentFrame.isSpare) {
+                totalScore += nextFrame.firstPins
+            }
+        }
+        totalScore += frameList.last().totalScore
+
+        assert(totalScore in 0..230) { "Total score should be between 0 and 230" }
+        return totalScore
     }
 
     private fun String.toFrameList(): List<Frame> {
