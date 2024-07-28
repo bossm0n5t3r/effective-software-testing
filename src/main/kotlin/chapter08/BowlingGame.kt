@@ -21,17 +21,35 @@ object BowlingGame {
                 .drop(1)
                 .dropLast(1)
                 .split(" ")
-        if (split.size == 1) {
-            require(split.first() == "X") { "Invalid frame format: $this" }
-            return Frame(10)
-        }
-        val firstPins = split.first().toInt()
-        val secondPins =
-            if (split.last() == "/") {
-                10 - firstPins
-            } else {
-                split.last().toInt()
+        return when (split.size) {
+            1 -> {
+                require(split.first() == "X") { "Invalid frame format: $this" }
+                Frame(10)
             }
-        return Frame(firstPins, secondPins)
+            2 -> {
+                val firstPins = split.first().toInt()
+                val secondPins =
+                    if (split.last() == "/") {
+                        10 - firstPins
+                    } else {
+                        split.last().toInt()
+                    }
+                Frame(firstPins, secondPins)
+            }
+            3 -> {
+                val (first, second, third) = split
+                val firstPins = if (first == "X") 10 else first.toInt()
+                val secondPins =
+                    when (second) {
+                        "X" -> 10
+                        "/" -> 10 - firstPins
+                        else -> second.toInt()
+                    }
+                val thirdPins = if (third == "X") 10 else third.toInt()
+                Frame(firstPins, secondPins, thirdPins)
+            }
+
+            else -> error("Invalid frame format: $this")
+        }
     }
 }
